@@ -11,14 +11,14 @@ Requerimientos para la instalación:
   * Instalación de un servidor con PHP.
   * Instalación de composer en tu ordenador.
   * Instalación de GIT (Solo si va a clonar el repositorio)
-  [link aqui...](https://github.com/yansellrivasdiaz/ticket_system). 
+  [link aqui...](https://github.com/yansellrivasdiaz/TicketSystemRestApi). 
 ---------------------------------------------------------------
 Instalación de la Aplicación:
 ============================
   
    * Ir mediante la terminar de linux o CMD windows a donde 
    quieras instalar la aplicación web.
-   * Clonar el [Repositorio](https://github.com/yansellrivasdiaz/ticket_system) desde github o descargar
+   * Clonar el [Repositorio](https://github.com/yansellrivasdiaz/TicketSystemRestApi) desde github o descargar
    a tu ordenador y descomprimir  en la carpeta donde deseas acceder 
    en modo local.
    * Una vez descargado o clonado debes ejecutar los siguientes comandos:
