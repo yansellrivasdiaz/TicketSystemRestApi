@@ -1,77 +1,104 @@
-Symfony Standard Edition
-========================
+Ticket System Rest Api
+======================
 
-**WARNING**: This distribution does not support Symfony 4. See the
-[Installing & Setting up the Symfony Framework][15] page to find a replacement
-that fits you best.
+**WARNING**: This distribution does not support Symfony 4.
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+***Desarrollado por: Yansell Rivas Diaz***
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+Requerimientos para la instalación:
+=================
 
-What's inside?
---------------
+  * Instalación de un servidor con PHP.
+  * Instalación de composer en tu ordenador.
+  * Instalación de GIT (Solo si va a clonar el repositorio)
+  [link aqui...](https://github.com/yansellrivasdiaz/ticket_system). 
+---------------------------------------------------------------
+Instalación de la Aplicación:
+============================
+  
+   * Ir mediante la terminar de linux o CMD windows a donde 
+   quieras instalar la aplicación web.
+   * Clonar el [Repositorio](https://github.com/yansellrivasdiaz/ticket_system) desde github o descargar
+   a tu ordenador y descomprimir  en la carpeta donde deseas acceder 
+   en modo local.
+   * Una vez descargado o clonado debes ejecutar los siguientes comandos:
+     
+     * **Composer install**
+     * **Editar archivo ***app/config/parameters.yml*** 
+     y cambiar los parámetros de conexión a la base de datos (***Nota: solo si no agregaste los parametros al momento de ejecutar composer install***)**
+     * **php bin/console doctrine:database:create**
+     * **php bin/console doctrine:schema:update --force**
+     * **php bin/console doctrine:fixtures:load** ***(Nota: una vez ejecute el comando saldrá: Careful, database will bu purged. Do you want to continue? (yes/no) [no]: yes*** y luego darle a enter).
+     * **php bin/console cache:clear --env=prod** (Para limpiar la cache del modo produccion)
+     
+   * Ahora puedes acceder a la ruta del proyecto ruta:
+    127.0.0.1(o Nombre del servidor)/ticket_system.
+    
+**Nota:** Los datos de accesos al sistema son los siguientes:
+    
+    * email: admin@admin.com 
+    * Password: admin    
 
-The Symfony Standard Edition is configured with the following defaults:
-
-  * An AppBundle you can use to start coding;
-
-  * Twig as the only configured template engine;
-
-  * Doctrine ORM/DBAL;
-
-  * Swiftmailer;
-
-  * Annotations enabled for everything.
-
-It comes pre-configured with the following bundles:
-
-  * **FrameworkBundle** - The core Symfony framework bundle
-
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
-
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
-
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
-
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
-
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.4/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.4/doctrine.html
-[8]:  https://symfony.com/doc/3.4/templating.html
-[9]:  https://symfony.com/doc/3.4/security.html
-[10]: https://symfony.com/doc/3.4/email.html
-[11]: https://symfony.com/doc/3.4/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
-[15]: https://symfony.com/doc/current/setup.html
+Rutas de accesos:
+============
+  * **Login:**
+    * ruta: ***http://127.0.0.1:8000/api/login***
+    * method: ***POST*** 
+    * parametros: ***[email,password]*** 
+  * **Authenticated Token Info:**
+    * ruta: ***http://127.0.0.1:8000/api/verifytoken***
+    * method: ***GET*** 
+----------------------------------------------------
+  * **employees get:**
+    * ruta: ***http://127.0.0.1:8000/api/employees***
+    * method: ***GET*** 
+  * **employees store:**
+    * ruta: ***http://127.0.0.1:8000/api/employee***
+    * method: ***POST*** 
+    * parametros: ***[firstname,lastname,email,password]***
+  * **employee get:**
+    * ruta: ***http://127.0.0.1:8000/api/employee/id***
+    * method: ***GET*** 
+  * **employee lock:**
+    * ruta: ***http://127.0.0.1:8000/api/employee/id/lock***
+    * method: ***PUT*** 
+  * **employee unlock:**
+    * ruta: ***http://127.0.0.1:8000/api/employee/id/unlock***
+    * method: ***PUT*** 
+----------------------------------------------------
+  * **tickets get:**
+    * ruta: ***http://127.0.0.1:8000/api/tickets***
+    * method: ***GET*** 
+  * **ticket store:**
+    * ruta: ***http://127.0.0.1:8000/api/ticket***
+    * method: ***POST*** 
+    * parametros: ***[subject,description,userId,employees,status]***
+  * **ticket get:**
+    * ruta: ***http://127.0.0.1:8000/api/ticket/id***
+    * method: ***GET*** 
+  * **ticket update:**
+    * ruta: ***http://127.0.0.1:8000/api/ticket/id***
+    * method: ***PUT*** 
+    * parametros: ***[subject,description,userId,employees,status]***
+  * **ticket delete:**
+    * ruta: ***http://127.0.0.1:8000/api/ticket/id***
+    * method: ***DELETE***
+  * **ticket close:**
+    * ruta: ***http://127.0.0.1:8000/api/ticket/id/close***
+    * method: ***PUT*** 
+----------------------------------------------------
+  * **time entries store:**
+    * ruta: ***http://127.0.0.1:8000/api/ticket/id/note***
+    * method: ***POST*** 
+    * parametros: ***[note,userId,ticketId]***
+  * **time entries delete:**
+    * ruta: ***http://127.0.0.1:8000/api/note/id***
+    * method: ***DELETE*** 
+----------------------------------------------------
+  * **ticket reports:**
+    * ruta: ***http://127.0.0.1:8000/reports/tickets***
+    * method: ***POST*** 
+    * parametros: ***[startdate,enddate]***
+---------------------------------------------------- 
+    
+***©copyright 2019 Ing. Yansell Rivas***
